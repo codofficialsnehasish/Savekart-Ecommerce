@@ -88,142 +88,39 @@
 </style>
 @endsection
 @section('content')
+     
+    <!-- =================Page Title Area Starts================= -->
 
-    <!-- Page item Area -->
-    <div id="page_item_area">
+    <div class="page-title-area pt-130 pb-120" style="background-image: url('{{ asset('assets/site-assets/img/bg/contact-bg.png') }}');">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 text-left">
-                    <h3>Shop</h3>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <ul class="p_items">
-                        <li><a href="{{ route('home') }}">home</a></li>
-                        <li><a href="javascript:void(0)">category</a></li>
-                        <li><span>Shop</span></li>
-                    </ul>
+                <div class="col-xl-12">
+                    <div class="page-titel-detalis">
+                        <div class="page-title position-relative">
+                            <h2>Shop</h2>
+                        </div>
+                        <div class="page-bc">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"> <i
+                                                class="fas fa-home "></i>Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                            href="javascript:void(0);">Shope</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-     
+
+    <!-- =================Page Title Area Ends================= -->
 
     <!-- Shop Product Area -->
-    <div class="shop_page_area">
+    {{-- <div class="shop_page_area">
         <div class="container">
             <div class="row">
-                {{-- <div class="col-lg-2 col-md-3">
-                    <section class="widget mb-9">
-                        <h4 class="headingVII fwEbold text-uppercase mb-6">Filter by price</h4>
-                        <!-- filter ranger form -->
-                        <form id="filterForm" action="" method="GET">
-                            <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                            </div>
-                            <input type="hidden" id="amount1" name="price_min" value="{{ request('price_min', 0) }}">
-                            <input type="hidden" id="amount2" name="price_max" value="{{ request('price_max', 10000) }}">
-                            <div class="get-results-wrap d-flex justify-content-left flex-column">
-                                <button type="submit" class="btn btnTheme btn-shop fwEbold md-round px-3 pt-1 pb-2 text-uppercase">Filter</button>
-                                <p id="amount" class="mb-0">Price : ₹<span id="min-price">{{ request('price_min', 0) }}</span> - ₹<span id="max-price">{{ request('price_max', 10000) }}</span></p>
-                            </div>
-                            
-                            <!-- Hidden fields to maintain other filters -->
-                            @if(request('sort_by'))
-                                <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
-                            @endif
-                            @if(request('show'))
-                                <input type="hidden" name="show" value="{{ request('show') }}">
-                            @endif
-                        </form>
-                    </section>
-                    <div id="accordion">
-                        <!-- Accordion Item: Product Type -->
-                        <div class="card">
-                            <div class="card-header p-0" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Product Type <span class="arrow">▼</span>
-                                    </button>
-                                </h5>
-                            </div>
-                    
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
-                                <form id="productTypeForm" class="filter-sub-form">
-                                    @php
-                                        $selectedTypes = request('product_types', []);
-                                        $types = ['Electronic Drum Kits', 'Midi Keyboards', 'Monitor Speakers', 'Digital Pianos'];
-                                    @endphp
-                                    
-                                    @foreach($types as $type)
-                                        <div class="shop_accordian_design">
-                                            <input type="checkbox" id="{{ Str::slug($type) }}" name="product_types[]" 
-                                                value="{{ $type }}" {{ in_array($type, $selectedTypes) ? 'checked' : '' }}>
-                                            <label for="{{ Str::slug($type) }}">{{ $type }}</label>
-                                        </div>
-                                    @endforeach
-                                </form>
-                            </div>
-                        </div>
-                    
-                        <!-- Accordion Item: Condition -->
-                        <div class="card">
-                            <div class="card-header p-0" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Condition <span class="arrow">▶</span>
-                                    </button>
-                                </h5>
-                            </div>
-                    
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
-                                <form id="conditionForm" class="filter-sub-form">
-                                    @php
-                                        $selectedConditions = request('conditions', []);
-                                        $conditions = ['New', 'Used', 'Refurbished'];
-                                    @endphp
-                                    
-                                    @foreach($conditions as $condition)
-                                        <div class="shop_accordian_design">
-                                            <input type="checkbox" id="{{ Str::slug($condition) }}" name="conditions[]" 
-                                                value="{{ $condition }}" {{ in_array($condition, $selectedConditions) ? 'checked' : '' }}>
-                                            <label for="{{ Str::slug($condition) }}">{{ $condition }}</label>
-                                        </div>
-                                    @endforeach
-                                </form>
-                            </div>
-                        </div>
-                    
-                        <!-- Accordion Item: Shipping Time -->
-                        <div class="card">
-                            <div class="card-header p-0" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Shipping Time <span class="arrow">▶</span>
-                                    </button>
-                                </h5>
-                            </div>
-                    
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
-                                <form id="shippingForm" class="filter-sub-form">
-                                    @php
-                                        $selectedShipping = request('shipping_times', []);
-                                        $shippingOptions = ['1 Day Shipping', '3 Days Shipping', '1 Week Shipping'];
-                                    @endphp
-                                    
-                                    @foreach($shippingOptions as $option)
-                                        <div class="shop_accordian_design">
-                                            <input type="checkbox" id="{{ Str::slug($option) }}" name="shipping_times[]" 
-                                                value="{{ $option }}" {{ in_array($option, $selectedShipping) ? 'checked' : '' }}>
-                                            <label for="{{ Str::slug($option) }}">{{ $option }}</label>
-                                        </div>
-                                    @endforeach
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 @php
                     $category = $category ?? null;
                 @endphp
@@ -336,17 +233,14 @@
                                         <div class="product_image">
                                             <a href="{{ route('product.details',$product->slug) }}">
                                                 <img src="{{ getProductMainImage($product->id) }}" alt="" />
-                                                {{-- <div class="new_badge">New</div> --}}
+                                                
                                               
                                             </a>
                                             <a href="javascript:void(0)" class="add-to-wishlist new_badge1"
                                             data-product-id="{{ $product->id }}"><i class="fa fa-heart-o"></i></a>
-                                            {{-- <div class="box-content"> --}}
+                                            
                                                
-                                                {{-- <a href="javascript:void(0)" class="add-to-cart-btn" data-product-id="{{ $product->id }}"><i class="fa fa-cart-plus"></i></a> --}}
-                                                {{-- <a href="{{ route('product.details', $product->slug) }}"><i
-                                                        class="fa fa-search"></i></a> --}}
-                                            {{-- </div> --}}
+                                               
                                         </div>
 
                                         <div class="product_btm_text">
@@ -372,7 +266,6 @@
                             <div class="pagination text-center">
                                 @if ($products->hasPages())
                                     <ul>
-                                        {{-- Previous Page Link --}}
                                         @if ($products->onFirstPage())
                                             <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a>
                                             </li>
@@ -381,7 +274,6 @@
                                                         class="fa fa-angle-left"></i></a></li>
                                         @endif
 
-                                        {{-- Pagination Elements --}}
                                         @foreach ($products->links()->elements as $element)
                                             @if (is_array($element))
                                                 @foreach ($element as $page => $url)
@@ -395,7 +287,6 @@
                                             @endif
                                         @endforeach
 
-                                        {{-- Next Page Link --}}
                                         @if ($products->hasMorePages())
                                             <li><a href="{{ $products->nextPageUrl() }}"><i
                                                         class="fa fa-angle-right"></i></a></li>
@@ -413,7 +304,687 @@
             </div>
 
         </div>
+    </div> --}}
+
+    <!-- =================Product Area Starts================= -->
+
+    <div class="product-area  product-shop-page pt-50 ">
+        <div class="container">
+            <div class="row">
+             <div class="col-xl-12 pb-50">
+                <div class="toolbar-navi d-inline-block ">
+                    <div class="toolbar d-flex">
+                        <div class="view-as d-flex mr-30">
+                            <span>View as:</span>
+                            <div class="view-as-button ml-10">
+                                <a href="#"><i class="fab fa-microsoft"></i></a>
+                                <a href="#"><i class="fas fa-list-ul"></i></a>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="sort-by d-flex mr-30">
+                            <span class="mr-10">Sort by:</span>
+                            <div class="sort-by-option position-relative">
+                                <button id="sort-option" class="sort-option">Most Recent <i class="fas fa-caret-down"></i></button>
+
+                                <div id="sub-sort-option" class="sub-sort-option  position-absolute " >
+                                    <a href="#">Alphbet</a>
+                                    <a href="#">Price</a>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="show-option d-flex">
+                            <span class="mr-10">Show:</span>
+                            <div class="show-option-list position-relative">
+                                <button id="show-option-numbe" class="show-option-number">11 <i class="fas fa-caret-down"></i></button>
+                                <div id="sub-show-option" class="sub-show-option">
+                                    <a href="#">20</a>
+                                    <a href="#">28</a>
+                                    <a href="#">32</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="construction-pagination float-right" aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+             </div>
+
+            </div>
+            
+            <div class="row">
+                @foreach ($products as $product)
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img ">
+                            <img src="{{ getProductMainImage($product->id) }}" alt="product">
+                            <ul class="social-icon">
+                                {{-- <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li> --}}
+                                <li><a href="javascript:void(0);" class="add-to-wishlist"
+                                            data-product-id="{{ $product->id }}"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ route('product.details',$product->slug) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                {{-- <span>Men Fashion</span> --}}
+                                <h6><a href="{{ route('product.details',$product->slug) }}">{{ $product->name }}</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>₹ {{ $product->total_price }}</span>
+                                        @if($product->discount_price != 0)
+                                        <del>₹ {{ $product->price }}</del>
+                                        @endif
+                                    </div>
+                                    {{-- <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set">
+
+                                        </div>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                {{-- <span>Men Fashion</span> --}}
+                                <h6><a href="{{ route('product.details',$product->slug) }}">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="javascript:void(0);" class="add-to-cart-btn" data-product-id="{{ $product->id }}"
+                                data-product-type="{{ $product->product_type }}"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img parcent-product">
+                            <img src="assets/img/product/product-49.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-gry">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper">
+                        <div class="product-img parcent-product">
+                            <img src="assets/img/product/product-57.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-gry">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                {{-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img sale-product ">
+                            <img src="assets/img/product/product-18.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img ">
+                            <img src="assets/img/product/product-50.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-1">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper ">
+                        <div class="product-img ">
+                            <img src="assets/img/product/product-58.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-1">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper mb-30 mt-30 mt-lg-0">
+                        <div class="product-img ">
+                            <img src="assets/img/product/product-19.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Women Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-black">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img sale-product ">
+                            <img src="assets/img/product/product-51.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-2">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper ">
+                        <div class="product-img sale-product ">
+                            <img src="assets/img/product/product-59.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-2">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                    <div class="product-wrapper mb-30 mt-30 mt-lg-0">
+                        <div class="product-img new-product">
+                            <img src="assets/img/product/product-20.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Women Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-white">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper mb-30">
+                        <div class="product-img ">
+                            <img src="assets/img/product/product-52.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-3">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrapper">
+                        <div class="product-img ">
+                            <img src="assets/img/product/product-60.png" alt="product">
+                            <ul class="social-icon">
+                                <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="flip-box">
+                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="price-color ">
+                                    <div class="price d-inline-block">
+                                        <span>$999</span>
+                                        <del>$899</del>
+                                    </div>
+                                    <div class="color float-right d-flex">
+                                        <span>Color:</span>
+                                        <div class="color-set color-3">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                <span>Men Fashion</span>
+                                <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
+                                <div class="buy-info ">
+                                    <div class="cart float-left">
+                                         <a href="#"><img src="assets/img/icon/cart-red.png" alt=""> Add To Cart</a>
+                                    </div>
+                                    <ul class="rating d-flex">
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12 pt-30">
+                    <div class="toolbar-navi d-inline-block ">
+                        <div class="toolbar d-flex">
+                            <div class="view-as d-flex mr-30">
+                                <span>View as:</span>
+                                <div class="view-as-button ml-10">
+                                    <a href="#"><i class="fab fa-microsoft"></i></a>
+                                    <a href="#"><i class="fas fa-list-ul"></i></a>
+                                    
+                                </div>
+                            </div>
+                            <div class="sort-by d-flex mr-30">
+                                <span class="mr-10">Sort by:</span>
+                                <div class="sort-by-option position-relative">
+                                    <button id="sort-option-2" class="sort-option">Most Recent <i class="fas fa-caret-down"></i></button>
+    
+                                    <div id="sub-sort-optio-2" class="sub-sort-option  position-absolute " >
+                                        <a href="#">Alphbet</a>
+                                        <a href="#">Price</a>
+                                        
+                                    </div>
+                                </div>
+    
+                            </div>
+                            <div class="show-option d-flex">
+                                <span class="mr-10">Show:</span>
+                                <div class="show-option-list position-relative">
+                                    <button id="show-option-numbe-2" class="show-option-number">11 <i class="fas fa-caret-down"></i></button>
+                                    <div id="sub-show-option-2" class="sub-show-option">
+                                        <a href="#">20</a>
+                                        <a href="#">28</a>
+                                        <a href="#">32</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="construction-pagination float-right" aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                 </div>
+   
+            </div>
+        </div>
     </div>
+
+    <!-- =================Product Area Ends================= -->
 
 @endsection
 

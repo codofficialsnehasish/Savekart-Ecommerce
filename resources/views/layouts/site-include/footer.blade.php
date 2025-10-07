@@ -61,7 +61,7 @@
         <div class="footer-bottom pt-25">
             <div class="container">
                 <div class="copyright d-inline-block ">
-                    <p>CopyRight ©2019  Design by <a href="https://codeofdolphins.com/" target="_blank">Code Of Dolphins</a>. All Rights Reserved.</p>
+                    <p>CopyRight ©2025 SaveKart, Design by <a href="https://codeofdolphins.com/" target="_blank">Code Of Dolphins</a>. All Rights Reserved.</p>
                 </div>
                 <div class="payment-card float-right">
                     <ul class=" d-flex">

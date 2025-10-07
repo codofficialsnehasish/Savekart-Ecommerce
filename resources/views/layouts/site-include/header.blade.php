@@ -4,71 +4,17 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2 col-md-2 col-sm-3 col-12 offset-xl-0 offset-lg-0 offset-md-4 offset-sm-4 ">
                     <div class="logo text-center text-lg-left">
-                        <a href="index.html"><img src="{{ asset('assets/site-assets/img/logo/logo.png') }}" alt="moly-logo"></a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('assets/site-assets/img/logo/logo.png') }}" alt="moly-logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-8 col-md-auto col-sm-auto">
                     <div class="main-menu pt-5">
                         <nav id="mobile-menu">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="blog-page.html">Features</a>
-                                    <div class="badge">New</div>
-                                </li>
-                                <li><a href="blog-page.html">Fashion</a></li>
-                                <li><a href="#">Page</a>
-                                    <div class="badge">Sale</div>
-                                        <ul class="sub-menu">
-                                            <li><a href="login-page.html">Login</a></li>
-                                            <li><a href="register-page.html">Register</a></li>
-                                            <li><a href="cart-page.html">Cart</a></li>
-                                            <li><a href="checkout-page.html">Checkout</a></li>
-                                            <li><a href="about-page.html">About Us</a></li>
-                                            <li><a href="404-page.html">404-page</a></li>
-
-                                        </ul>
-                                </li>
-                                <li><a href="shop-detalis-page.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid-page.html">Shop-Grid</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-grid-page.html">Shop Grid</a>
-                                                <li><a href="shop-grid-page-2.html">Shop Grid 2</a>
-                                                <li><a href="shop-grid-page-3.html">Shop Grid 3</a>
-                                                <li><a href="shop-grid-left-sidebar-page.html">Shop Grid Left
-                                                        Sidebar</a>
-                                                <li><a href="shop-grid-right-sidebar-page.html">Shop Grid Right
-                                                        Sidebar</a>
-
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-list-page.html">Shop-List</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-list-left-sidebar-page.html">Shop List Left
-                                                        Sidebar</a></li>
-                                                <li><a href="shop-list-right-sidebar-page.html">Shop List Right
-                                                        Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-detalis-page.html">Shop Detalis</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-detalis-left-sidebar-page.html">Shop Detalis
-                                                        Left Sidebar</a></li>
-                                                <li><a href="shop-detalis-right-sidebar-page.html">Shop Detalis
-                                                        Right Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog-page.html">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-page-2.html">Blog</a></li>
-                                        <li><a href="blog-detalis-page.html">Blog Detalis</a></li>
-                                        <li><a href="blog-left-sidebar-page.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar-page.html">Blog Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-page.html">Contact Us</a></li>
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ route('product.all') }}">Shop</a></li>
+                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -78,8 +24,10 @@
                         <div class="search position-relative mr-15 ">
                             <a href="#"><img src="{{ asset('assets/site-assets/img/icon/search.png') }}" alt=""></a>
                             <div class="search-form">
-                                <form action="#">
-                                    <input type="text" placeholder="Enter your keywords.....">
+                                <form method="GET" action="{{ route('search') }}">
+                                    <input type="text" name="query" id="search-box"
+                                        placeholder="Search products, brands, categories..." class="form-control">
+                                    <div id="suggestions-box" class="suggestions"></div>
                                 </form>
                             </div>
                         </div>

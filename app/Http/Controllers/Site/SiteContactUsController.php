@@ -31,7 +31,7 @@ class SiteContactUsController extends Controller
             $contact->name = $request->name;
             $contact->email = $request->email;
             $contact->phone = $request->phone;
-            $contact->subject = $request->subject;
+            $contact->subject = $request->subject ?? " ";
             $contact->message = $request->message;
             $res = $contact->save();
 

@@ -615,7 +615,7 @@
     <!-- =================Deal Area Ends================= -->
     <!-- =================Blog Area Starts================= -->
 
-        <div class="blog-area blog-area-4 pt-50">
+        {{-- <div class="blog-area blog-area-4 pt-50">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -684,12 +684,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     <!-- =================Blog Area Ends================= -->
 
     <!-- =================Brand Area Starts================= -->
 
-        <div class="brand-area ">
+        <div class="brand-area pt-50">
             <div class="container">
                 <div class="brand-active">
                     <div class="single-brand">

@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{{ asset('assets/site-assets/css/mean-menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site-assets/css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site-assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/site-assets/zoom/css/my-zoom.css') }}" />	
+    <!-- Toast message -->
+    <link href="{{ asset('assets/admin-assets/plugins/toast/toastr.css') }}" rel="stylesheet" type="text/css" />
 
     <style>
         .suggestions {
@@ -55,7 +58,7 @@
 
     <!-- =================Autopopup Area Starts================= -->
 
-    <div id="autopopup-option" class="subscribe-area newsletter-page wow fadeIn bg-transparent">
+    {{-- <div id="autopopup-option" class="subscribe-area newsletter-page wow fadeIn bg-transparent">
         <div class="subscribe-detalis pt-90 pr-90 pl-90 pb-80" style="background-image: url({{ asset('assets/site-assets/img/subscribe-bg.png') }});">
             <div id="close-button" >
                 <button><i class="fas fa-times"></i></button>
@@ -78,7 +81,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
         
     <!-- =================Autopopup Area Starts================= -->
 
@@ -101,12 +104,13 @@
     <script src="{{ asset('assets/site-assets/js/vendor/jquery-mean-menu.min.js') }}"></script>
     <script src="{{ asset('assets/site-assets/js/vendor/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/site-assets/js/vendor/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/site-assets/js/countdown.js') }}"></script>
+    {{-- <script src="{{ asset('assets/site-assets/js/countdown.js') }}"></script> --}}
     <script src="{{ asset('assets/site-assets/js/vendor/jquery.nice-number.js') }}"></script>  
     <script src="{{ asset('assets/site-assets/js/vendor/slick.min.js') }}"></script>
     <script src="{{ asset('assets/site-assets/js/vendor/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/site-assets/js/vendor/wow-1.3.0.min.js') }}"></script>  
     <script src="{{ asset('assets/site-assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/site-assets/zoom/js/my-zoom.js') }}"></script>
 
     <!-- toast message -->
     <script src="{{ asset('assets/admin-assets/plugins/toast/toastr.js') }}"></script>
@@ -155,50 +159,50 @@
 
 
 
-        document.querySelector('.navbar-toggler').addEventListener('click', function () {
-            const offcanvas = document.getElementById('offcanvasNavbar');
-            if (offcanvas.classList.contains('show')) {
-                offcanvas.classList.remove('show');
-            } else {
-                offcanvas.classList.add('show');
-            }
-        });
+        // document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        //     const offcanvas = document.getElementById('offcanvasNavbar');
+        //     if (offcanvas.classList.contains('show')) {
+        //         offcanvas.classList.remove('show');
+        //     } else {
+        //         offcanvas.classList.add('show');
+        //     }
+        // });
 
-        document.querySelector('.close').addEventListener('click', function () {
-            document.getElementById('offcanvasNavbar').classList.remove('show');
-        });
+        // document.querySelector('.close').addEventListener('click', function () {
+        //     document.getElementById('offcanvasNavbar').classList.remove('show');
+        // });
 
-        document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                const dropdownMenu = toggle.nextElementSibling;
-                if (dropdownMenu.style.display === 'block') {
-                    dropdownMenu.style.display = 'none';
-                } else {
-                    dropdownMenu.style.display = 'block';
-                }
-            });
-        });
+        // document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
+        //     toggle.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         const dropdownMenu = toggle.nextElementSibling;
+        //         if (dropdownMenu.style.display === 'block') {
+        //             dropdownMenu.style.display = 'none';
+        //         } else {
+        //             dropdownMenu.style.display = 'block';
+        //         }
+        //     });
+        // });
 
 
-        $(document).on('click', '[data-toggle="offcanvas1"]', function (e) {
-            e.preventDefault();
-            $('#offcanvasNavbar1').toggleClass('show');
-        });
+        // $(document).on('click', '[data-toggle="offcanvas1"]', function (e) {
+        //     e.preventDefault();
+        //     $('#offcanvasNavbar1').toggleClass('show');
+        // });
 
-        // Close button functionality
-        $(document).on('click', '.offcanvas .close', function (e) {
-            e.preventDefault();
-            $('#offcanvasNavbar1').removeClass('show');
-        });
+        // // Close button functionality
+        // $(document).on('click', '.offcanvas .close', function (e) {
+        //     e.preventDefault();
+        //     $('#offcanvasNavbar1').removeClass('show');
+        // });
 
-        // Close the offcanvas if clicking outside it
-        $(document).mouseup(function (e) {
-            var container = $("#offcanvasNavbar1");
-            if (!container.is(e.target) && container.has(e.target).length === 0) {
-                container.removeClass('show');
-            }
-        });
+        // // Close the offcanvas if clicking outside it
+        // $(document).mouseup(function (e) {
+        //     var container = $("#offcanvasNavbar1");
+        //     if (!container.is(e.target) && container.has(e.target).length === 0) {
+        //         container.removeClass('show');
+        //     }
+        // });
     </script>
 
 

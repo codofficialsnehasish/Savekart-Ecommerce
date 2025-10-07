@@ -190,7 +190,7 @@
         if (firstImageUrl) {
             updateImageDisplay(firstImageUrl);
         } else {
-            console.error('No image URLs found in variation options');
+            // console.error('No image URLs found in variation options');
         }
 
 

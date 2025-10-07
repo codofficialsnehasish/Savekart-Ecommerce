@@ -4,82 +4,115 @@
 
 @section('content')
 
-<!-- Page item Area -->
-<div id="page_item_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 text-left">
-                <h3>Contact</h3>
-            </div>		
+    <!-- =================Page Title Area Starts================= -->
 
-            <div class="col-sm-6 text-right">
-                <ul class="p_items">
-                    <li><a href="{{ route('home') }}">home</a></li>
-                    <li><span>Contact</span></li>
-                </ul>					
-            </div>	
-        </div>
-    </div>
-</div>
-
-<!-- Contact Page -->
-<div class="contact_page_area fix">
-    <div class="container">					
-        <div class="row">
-            <div class="contact_frm_area text-left col-lg-6 col-md-12 col-xs-12">
-                <h3>Get in Touch</h3>
-                <form action="{{ route('contact.store') }}" method="POST">
-                    @csrf
-                    <div class="form-row">
-                        <div class="form-group col-sm-6"><input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name*" /></div>
-                        <div class="form-group col-sm-6"><input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email*" /></div>
+    <div class="page-title-area pt-130 pb-120" style="background-image: url('{{ asset('assets/site-assets/img/bg/contact-bg.png') }}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-titel-detalis  ">
+                        <div class="page-title position-relative">
+                            <h2>Contact Page</h2>
+                        </div>
+                        <div class="page-bc">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"> <i
+                                                class="fas fa-home "></i>Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                            href="javascript:void(0);">Contact</a></li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-sm-6"><input type="tel" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Phone*" /></div>
-                        <div class="form-group col-sm-6"><input type="text" class="form-control" name="subject" value="{{ old('subject') }}" placeholder="Subject" /></div>
-                    </div>
-        
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" name="message" placeholder="Message">{{ old('message') }}</textarea>
-                    </div>
-                    
-                    <div class="input-area submit-area"><button class="btn border-btn" type="submit" >Send Message</button></div>
-                    
-                </form>		
-            </div>	
-        
-            <div class="contact_info col-lg-6 col-md-12 col-xs-12">
-                <h3>Contact Info</h3>
-                <p class="subtitle">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                </p>
-                <div class="single_info">
-                    <div class="con_icon"><i class="fa fa-map-marker"></i></div>
-                    <p>Kavi Nazrul Sarani, Opposite Asma Dhaba, </br>
-                        Baruipur, Kolkata, India, 700144</p>
                 </div>
-                <div class="single_info">
-                    <div class="con_icon"><i class="fa fa-phone"></i></div>
-                    <p>Phone : +91 70036 96900</p>
-                </div>
-                <div class="single_info">
-                    <div class="con_icon"><i class="fa fa-envelope"></i></div>
-                    <a href="#">gsmmusicalkolkata@hotmail.com</a>
-                </div>
-                
             </div>
         </div>
     </div>
 
-                    
-    <div class="fix">
-        <div id="contact_map_area">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.7115452661424!2d88.42513477434663!3d22.364518040566473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a026ddf8a344981%3A0xc845c1e9b59dbf30!2sGSM%20Musical!5e0!3m2!1sen!2sin!4v1738389699104!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- =================Page Title Area Ends================= -->
+
+    <!-- =================Map Area Starts================= -->
+
+    <div class="map-area pt-50 ">
+        <div class="container">
+            <div id="map-container-googl" class="map-container ">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.7984463284847!2d88.68823870000001!3d26.526606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e47b0db23cccd9%3A0xf93f840097e31040!2sSAVEKART!5e0!3m2!1sen!2sin!4v1759838507223!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
-    </div>	
-        
-</div>
+    </div>
+    <!-- =================Map Area Ends================= -->
+
+    <!-- =================Comment  Area Starts================= -->
+
+    <div class="contact-page comment-area pt-50 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-8 col-md-8 col-sm-7 col-12">
+                    <div class="comment-sidebar">
+                        <div class="section-title d-inline-block">
+                            <h3>
+                                Leave Reply
+                            </h3>
+                        </div>
+                        <div class="post-comment pt-25 ">
+                            <form action="{{ route('contact.store') }}"  method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4">
+                                        <ul class="name">
+                                            <li><label for="name">Name:</label></li>
+                                            <li><input type="text" name="name" value="{{ old('name') }}" id="name"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4">
+                                        <ul class="email pt-15 pt-sm-0">
+                                            <li><label for="email">Email Address :</label></li>
+                                            <li><input type="email" name="email" value="{{ old('email') }}" id="email"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4">
+                                        <ul class="email pt-15 pt-sm-0">
+                                            <li><label for="phone">Phone :</label></li>
+                                            <li><input type="tel" name="phone" value="{{ old('phone') }}" id="phone"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <ul class="text-area pt-10">
+                                            <li><label for="text-area">Write a message :</label></li>
+                                            <li>
+                                                <textarea name="message" id="text-area" cols="30"
+                                                    rows="10">{{ old('message') }}</textarea>
+                                            </li>
+                                        </ul>
+                                        <div class="submit pt-30">
+                                            <input type="submit" value="SUBMIT">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-5 col-12">
+                    <div class="contact-info">
+                        <div class="section-title d-inline-block text-uppercase">
+                            <h3>
+                                Contact info
+                            </h3>
+                        </div>
+                        <p>Discover the latest trends and timeless styles. From everyday essentials to statement pieces, our collection is designed to keep you looking and feeling your best — all at prices you’ll love.</p>
+                        <ul class="contact pt-15">
+                            <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Govt. Engineering College Campus, Subhash Nagar, Kharia, Jalpaiguri, West Bengal 735102</span></li>
+                            <li><i class="fas fa-envelope" aria-hidden="true"></i><span>savekart@gmail.com</span></li>
+                            <li><i class="fas fa-phone-alt" aria-hidden="true"></i><span>+91 96419 28850</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================Comment  Area Ends================= -->
 
 @endsection
