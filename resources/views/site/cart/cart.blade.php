@@ -4,194 +4,185 @@
 
 @section('content')
 
-<!-- Page item Area -->
-<div id="page_item_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 text-left">
-                <h3>Cart Details</h3>
-            </div>		
+    <!-- =================Page Title Area Starts================= -->
 
-            <div class="col-sm-6 text-right">
-                <ul class="p_items">
-                    <li><a href="{{ route('home') }}">home</a></li>
-                    <li><span>Cart</span></li>
-                </ul>					
-            </div>	
-        </div>
-    </div>
-</div>
-
-<!-- Cart Page -->
-<div class="cart_page_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="cart_table_area table-responsive">
-                    <table class="table cart_prdct_table text-center">
-                        <thead>
-                            <tr>
-                                <th class="cpt_no">No.</th>
-                                <th class="cpt_img">image</th>
-                                <th class="cpt_pn">product name</th>
-                                <th class="cpt_q">quantity</th>
-                                <th class="cpt_p">price</th>
-                                <th class="cpt_t">total</th>
-                                <th class="cpt_r">remove</th>
-                            </tr>
-                        </thead>
-                        {{-- <tbody>
-                            @foreach($carts as $cart_item)
-                            <tr data-id="{{ $cart_item->id }}">
-                                <td><span class="cp_no">{{ $loop->iteration }}</span></td>
-                                <td><a href="{{ route('product.details',$cart_item->product?->slug) }}" class="cp_img"><img src="{{ getProductMainImage($cart_item->product?->id) }}" alt="" /></a></td>
-                                <td><a href="{{ route('product.details',$cart_item->product?->slug) }}" class="cp_title">{{ $cart_item->product?->name }}</a></td>
-                                <td>										
-                                    <div class="cp_quntty">																			
-                                        <input name="quantity" value="{{ $cart_item->quantity }}" class="qty" size="2" type="number">													
-                                    </div>
-                                </td>
-                                <td><p class="cp_price">Rs {{ $cart_item->product?->total_price }}</p></td>
-                                <td><p class="cpp_total">Rs {{ $cart_item->product?->total_price * $cart_item->quantity }}</p></td>
-                                <td><a class="btn btn-default cp_remove"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                            @endforeach
-                        </tbody> --}}
-                        <tbody>
-                            @foreach($carts as $cart_item)
-                            <tr data-id="{{ $cart_item->id }}">
-                                <td><span class="cp_no">{{ $loop->iteration }}</span></td>
-                                <td><a href="{{ route('product.details', $cart_item->product?->slug) }}" class="cp_img"><img src="{{ getProductMainImage($cart_item->product?->id) }}" alt="" /></a></td>
-                                <td>
-                                    <a href="{{ route('product.details', $cart_item->product?->slug) }}" class="cp_title">
-                                        {{ $cart_item->product?->name }} 
-                                        @if($cart_item->productVariationOption)
-                                            ({{ $cart_item->productVariationOption->variation_name }})
-                                        @endif
-                                    </a>
-                                </td>
-                                <td>										
-                                    <div class="cp_quntty">																			 
-                                        <input name="quantity" value="{{ $cart_item->quantity }}" class="qty" size="2" type="number">													
-                                    </div>
-                                </td>
-                                <td>
-                                    @if($cart_item->productVariationOption)
-                                        <p class="cp_price">Rs {{ $cart_item->productVariationOption->price }}</p>
-                                    @else
-                                        <p class="cp_price">Rs {{ $cart_item->product?->total_price }}</p>
-                                    @endif
-                                </td>
-                                <td><p class="cpp_total">
-                                    @if($cart_item->productVariationOption)
-                                        Rs {{ $cart_item->productVariationOption->price * $cart_item->quantity }}
-                                    @else
-                                        Rs {{ $cart_item->product?->total_price * $cart_item->quantity }}
-                                    @endif
-                                </p></td>
-                                <td><a class="btn btn-default cp_remove"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        
-                    </table>
+    <div class="page-title-area pt-130 pb-120 " style="background-image: url('{{ asset('assets/site-assets/img/bg/contact-bg.png') }}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-titel-detalis  ">
+                        <div class="page-title position-relative">
+                            <h2>Cart</h2>
+                        </div>
+                        <div class="page-bc">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"> <i
+                                                class="fas fa-home "></i>Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                            href="javascript:void(0);">Cart</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-xs-12 cart-actions cart-button-cuppon">
-                <div class="row">
-                    <div class="col-sm-7">
-                        <div class="cart-action">
-                            <a href="{{ route('product.all') }}" class="btn border-btn">continiue shopping</a>
-                            <a href="javascript:void(0)" onclick="location.reload()" class="btn border-btn">update shopping bag</a>
-                        </div>
+    </div>
+
+    <!-- =================Page Title Area Ends================= -->
+
+    <div class="product-area product-detalis-page cart-page-area  pt-50 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="cart-table table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Variation</th>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Quantite</th>
+                                    <th scope="col">Unit Price</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($carts as $cart_item)
+                                <tr data-id="{{ $cart_item->id }}">
+                                    <td>
+                                        <div class="cart-img">
+                                            <a href="{{ route('product.details', $cart_item->product?->slug) }}">
+                                                <img src="{{ getProductMainImage($cart_item->product?->id) }}" style="width: 120px;" alt="product">
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="td-width">
+                                        <div class="cart-description text-left pl-20">
+                                            <span>{{ $cart_item->product?->name }}</span>
+                                            <p>{{ $cart_item->product?->sort_description }}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-model">
+                                            @if($cart_item->productVariationOption)
+                                                ({{ $cart_item->productVariationOption->variation_name }})
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-edit">
+                                            <a href="javascript:void(0);" class="cp_remove"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="product-number ">
+                                            <div class="quty cp_quntty">
+                                                <input class="qty" type="number" name="quantity" value="{{ $cart_item->quantity }}" >                                       
+                                            </div>     
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price">
+                                            @if($cart_item->productVariationOption)
+                                                <span>₹ {{ $cart_item->productVariationOption->price }}</span>
+                                            @else
+                                                <span>₹ {{ $cart_item->product?->total_price }}</span>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price">
+                                            @if($cart_item->productVariationOption)
+                                                <span>₹ {{ $cart_item->productVariationOption->price * $cart_item->quantity }}</span>
+                                            @else
+                                                <span>₹ {{ $cart_item->product?->total_price * $cart_item->quantity }}</span>
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="table-button text-left">
+                                            <a class="b-btn pr-15 pl-15 pt-15 pb-15" href="{{ route('product.all') }}">CONTINUE SHOPPING </a>
+                                            <a class="b-btn pr-15 pl-15 pt-15 pb-15 float-right" href="javascript:void(0)" onclick="location.reload()">UPDATE SHOPPING CART</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
-                    
-                    <div class="col-sm-5">
-                        <div class="cuppon-wrap">
-                            <h4>Discount Code</h4>
-                            <p>Enter your coupon code if you have</p>
+                </div>
+
+            </div>
+            <div class="product-cart pt-35">
+                <div class="row justify-content-center justify-content-lg-start">
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-9 col-12">
+                        {{-- <div class="cart-wrapper pl-20 pt-30 pr-20 pb-30">
+                            <div class="section-title">
+                                <h6>
+                                    Estimate Shopping And Tax
+                                </h6>
+                            </div>
+                            <div class="country pt-15">
+                                <span>Country</span>
+                                <input type="text" placeholder="United States">
+                            </div>
+                            <div class="state pt-15">
+                                <span>State/Province</span>
+                                <input type="text" placeholder="Please select region, state or province">
+                            </div>
+                            <div class="zip-code pt-15 pb-20">
+                                <span>Zip/Postal Code</span>
+                                <input type="text">
+                            </div>
+                            <div class="table-button d-flex justify-content-end">
+                                <a href="#" class="b-btn  pl-20 pr-20 pb-15 pt-15">GET QUOTE</a>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-9 col-12">
+                        <div class="cart-wrapper pl-20 pt-30 pr-20 pb-30 mt-50 mb-50 mt-lg-0 mb-lg-0">
+                            <div class="section-title">
+                                <h6>
+                                    Discount Code
+                                </h6>
+                            </div>
                             <form id="applyCouponForm">
                                 @csrf
-                                <input type="text" id="coupon_code" name="coupon_code" placeholder="Enter coupon code" />
-                                <button type="submit" class="btn border-btn">Apply Coupon</button>
+                            <div class="country pt-15 pb-20">
+                                <span class="pb-10">Enter your coupon code if you have one.</span>
+                                <input type="text" id="coupon_code" name="coupon_code">
+                            </div>
+                            <div class="table-button d-flex justify-content-end ">
+                                <button type="submit" class="b-btn  pt-15 pb-15 pr-30 pl-30 ">APPLY</button>
+                            </div>
                             </form>
                             <p id="coupon-message"></p>
                         </div>
                     </div>
-                </div>
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-9 col-12">
+                        <div class="cart-wrapper pl-20 pt-30 pr-20 pb-50">
+                            <div class="cart-price-area text-right">
+                                <p>Subtotal <span class="d-inline-block"> ₹{{ calculate_cart_total() }}</span></p>
+                                <p>Grand Total  <span class="d-inline-block"> ₹{{ calculate_cart_total() }}</span></p>
+                            </div>
+
+                            <div class="table-button d-flex justify-content-end pt-20">
+                                <a href="{{ route('checkout') }}" class="b-btn  pt-20 pb-20 pr-50 pl-50 ">PROCED TO CHECKOUT</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>    
             </div>
-            
-            <div class="col-md-4 col-xs-12 cart-checkout-process text-right">
-                <div class="wrap">
-                    <p><span>Subtotal</span><span id="cart-subtotal">Rs {{ calculate_cart_total() }}</span></p>
-                    <h4><span>Grand total</span><span id="cart-grandtotal">Rs {{ calculate_cart_total() }}</span></h4>
-                    <a href="{{ route('checkout') }}" class="btn border-btn">process to checkout</a>
-                </div>
-            </div>
-            
         </div>
     </div>
-</div>
-
-<!--  Process -->
-<section class="process_area section_padding gradient_section">
-    <div class="container">
-        <div class="row text-center">		
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="single-process">
-                    <!-- process Icon -->
-                    <div class="picon"><i class="fa fa-truck"></i></div>
-                    <!-- process Content -->
-                    <div class="process_content">
-                        <h3>free shipping</h3>
-                        <p>Lorem ipsum dummy</p>
-                    </div>
-                </div>	
-            </div>	<!-- End Col -->				
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="single-process">
-                    <!-- process Icon -->
-                    <div class="picon"><i class="fa fa-money"></i></div>
-                    <!-- process Content -->
-                    <div class="process_content">
-                        <h3>Cash On Delivery</h3>
-                        <p>Lorem ipsum dummy</p>
-                    </div>
-                </div>	
-            </div>	<!-- End Col -->				
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="single-process">
-                    <!-- process Icon -->
-                    <div class="picon"><i class="fa fa-headphones "></i></div>
-                    <!-- process Content -->
-                    <div class="process_content">
-                        <h3>Support 24/7</h3>
-                        <p>Lorem ipsum dummy</p>
-                    </div>
-                </div>	
-            </div>	<!-- End Col -->				
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="single-process">
-                    <!-- process Icon -->
-                    <div class="picon"><i class="fa fa-clock-o"></i></div>
-                    <!-- process Content -->
-                    <div class="process_content">
-                        <h3>Opening All Week</h3>
-                        <p>Lorem ipsum dummy</p>
-                    </div>
-                </div>	
-            </div>	<!-- End Col -->
-            
-        </div>
-    </div>
-</section>
-<!--  End Process -->
 
 @endsection
 

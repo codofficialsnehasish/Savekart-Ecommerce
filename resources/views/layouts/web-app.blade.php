@@ -51,9 +51,9 @@
 </head>
 <body>
     <!-- =============Preloader Starts=============-->
-    <div class="loader">
+    {{-- <div class="loader">
         <div class="loding-cricle"></div>
-    </div>
+    </div> --}}
     <!-- =============Preloader Ends=============-->
 
     <!-- =================Autopopup Area Starts================= -->
@@ -203,6 +203,18 @@
         //         container.removeClass('show');
         //     }
         // });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.user-toggle').on('click', function (e) {
+                e.stopPropagation();
+                $('.user-dropdown').toggle();
+            });
+            $(document).on('click', function () {
+                $('.user-dropdown').hide();
+            });
+        });
     </script>
 
 

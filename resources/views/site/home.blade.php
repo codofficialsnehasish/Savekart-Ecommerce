@@ -28,40 +28,6 @@
             </div>
         </div>
         @endforeach
-        {{-- <div class="single-slide  " style="background-image: url(assets/img/slider/slider-bg-4.jpg);">
-            <div class="slider-content slider-height">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 offset-xl-0 offset-lg-1 offset-md-1">
-                            <div class="hero-text pt-15 ">    
-                                <h1>
-                                    Men T-Shirt
-                                </h1>
-                                <p class="pt-15 ">Phasellus vel elit efficitur, gravida libero sit amet, scelerisque mauris. Morbi tortor arcu, commodo sit amet nulla sed.</p>
-                                <a href="shop-detalis-page.html"><i class="fa fa-plus" aria-hidden="true"></i>Discover More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slide  " style="background-image: url(assets/img/slider/slider-bg-4.jpg);">
-            <div class="slider-content slider-height">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 offset-xl-0 offset-lg-1 offset-md-1">
-                            <div class="hero-text pt-15 ">    
-                                <h1>
-                                    Men T-Shirt
-                                </h1>
-                                <p class="pt-15 ">Phasellus vel elit efficitur, gravida libero sit amet, scelerisque mauris. Morbi tortor arcu, commodo sit amet nulla sed.</p>
-                                <a href="shop-detalis-page.html"><i class="fa fa-plus" aria-hidden="true"></i>Discover More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </div>
     @endif
 
@@ -84,7 +50,7 @@
                         </h1>
                         <span>Limited Offer 25% Off!</span>
                         <p>Phasellus vel elit efficitur, gravida libero sit amet, scelerisque mauris.</p>
-                        <a href="shop-detalis-page.html"><i class="fa fa-plus" aria-hidden="true"></i> Discover More</a>
+                        <a href="{{ route('product.all') }}"><i class="fa fa-plus" aria-hidden="true"></i> Discover More</a>
                     </div>
                 </div>
             </div>
@@ -95,481 +61,80 @@
 
     <!-- =================Product Area Starts================= -->
 
-        <div class="product-area product-area-3 ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="section-title">
-                            <h3>
-                                Our Products
-                            </h3>
-                        </div>
+    <div class="product-area product-area-3 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title">
+                        <h3>
+                            Our Products
+                        </h3>
                     </div>
                 </div>
-                <hr>
-
             </div>
-            <div class="container pl-0 pr-0">
-                <div class="custom-row ">
-                    <div class="product-active pt-30">
-                        <div class="col-xl-3">
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-1.jpg') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <div class="product-info">
-                                         <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                                    
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <hr>
+
+        </div>
+        <div class="container pl-0 pr-0">
+            <div class="custom-row ">
+                <div class="product-active pt-30">
+                    @foreach ($all_products as $product)
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
+                        <div class="product-wrapper mb-30">
+                            <div class="product-img ">
+                                <img src="{{ getProductMainImage($product->id) }}" alt="product">
+                                <ul class="social-icon">
+                                    {{-- <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li> --}}
+                                    <li><a href="javascript:void(0);" class="add-to-wishlist"
+                                                data-product-id="{{ $product->id }}"><i class="far fa-heart" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{ route('product.details',$product->slug) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                </ul>
                             </div>
-                            <div class="product-wrapper">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-30.png') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
+                            <div class="flip-box">
+                                <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                                    {{-- <span>Men Fashion</span> --}}
+                                    <h6><a href="{{ route('product.details',$product->slug) }}">{{ $product->name }}</a></h6>
+                                    <div class="price-color ">
+                                        <div class="price d-inline-block">
+                                            <span>₹ {{ $product->total_price }}</span>
+                                            @if($product->discount_price != 0)
+                                            <del>₹ {{ $product->price }}</del>
+                                            @endif
                                         </div>
+                                        {{-- <div class="color float-right d-flex">
+                                            <span>Color:</span>
+                                            <div class="color-set">
+
+                                            </div>
+                                        </div> --}}
                                     </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
+                                </div>
+                                <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
+                                    {{-- <span>Men Fashion</span> --}}
+                                    <h6><a href="{{ route('product.details',$product->slug) }}">Military Patch Pocket Blazer</a></h6>
+                                    <div class="buy-info ">
+                                        <div class="cart float-left">
+                                            <a href="javascript:void(0);" class="add-to-cart-btn" data-product-id="{{ $product->id }}"
+                                    data-product-type="{{ $product->product_type }}"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
                                         </div>
+                                        <ul class="rating d-flex">
+                                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3">
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img sale-product ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-2.jpg') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrapper">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-31.png') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-3.jpg') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Women Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set color-black">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-32.png') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Women Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set color-black">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img new-product">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-4.jpg') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Women Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set color-white">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrapper">
-                                <div class="product-img new-product">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-33.png') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Women Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set color-white">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="product-wrapper mb-30">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-2.jpg') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrapper">
-                                <div class="product-img ">
-                                    <img src="{{ asset('assets/site-assets/img/product/product-31.png') }}" alt="product">
-                                    <ul class="social-icon">
-                                        <li><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="far fa-heart" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="flip-box">
-                                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="price-color ">
-                                            <div class="price d-inline-block">
-                                                <span>$999</span>
-                                                <del>$899</del>
-                                            </div>
-                                            <div class="color float-right d-flex">
-                                                <span>Color:</span>
-                                                <div class="color-set">
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                        <span>Men Fashion</span>
-                                        <h6><a href="shop-detalis-page.html">Military Patch Pocket Blazer</a></h6>
-                                        <div class="buy-info ">
-                                            <div class="cart float-left">
-                                                 <a href="#"><img src="{{ asset('assets/site-assets/img/icon/cart-red.png') }}" alt=""> Add To Cart</a>
-                                            </div>
-                                            <ul class="rating d-flex">
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
                     </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
+    </div>
     
     <!-- =================Product Area Ends================= -->
 
@@ -589,23 +154,23 @@
                         <span>Phasellus vel elit efficitur, gravida libero sit amet, scelerisque mauris.</span>
                         <div id="countdown">
                             <div class="cd-box">
-                                <span class="numbers days">00</span>
+                                <span class="numbers days">08</span>
                                 <span class="strings timeRefDays">Days</span>
                             </div>
                             <div class="cd-box">
-                                <span class="numbers hours">00</span>
+                                <span class="numbers hours">05</span>
                                 <span class="strings timeRefHours">Hours</span>
                             </div>
                             <div class="cd-box">
-                                <span class="numbers minutes">00</span>
+                                <span class="numbers minutes">04</span>
                                 <span class="strings timeRefMinutes">Mins</span>
                             </div>
                             <div class="cd-box">
-                                <span class="numbers seconds">00</span>
+                                <span class="numbers seconds">05</span>
                                 <span class="strings timeRefSeconds">Secs</span>
                             </div>
                         </div>
-                        <a href="shop-detalis-page.html"> <i class="fa fa-plus" aria-hidden="true"></i> Discover Now________</a>
+                        <a href="{{ route('product.all') }}"> <i class="fa fa-plus" aria-hidden="true"></i> Discover Now________</a>
                     </div>
                 </div>
             </div>
@@ -689,47 +254,23 @@
 
     <!-- =================Brand Area Starts================= -->
 
-        <div class="brand-area pt-50">
-            <div class="container">
-                <div class="brand-active">
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand1.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand2.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand3.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand4.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand1.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand2.png') }}" alt="brand">
-                        </div>
-                    </div>
-                    <div class="single-brand">
-                        <div class="brand-img">
-                            <img src="{{ asset('assets/site-assets/img/brand/brand3.png') }}" alt="brand">
-                        </div>
+    @if ($brands->isNotEmpty())
+    <div class="brand-area pt-50">
+        <div class="container">
+            <div class="brand-active">
+                @foreach ($brands as $brand)
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <a href="{{ route('brands.products', $brand->slug) }}">
+                            <img src="{{ $brand->getFirstMediaUrl('brand') }}" alt="{{ $brand->name }}">
+                        </a>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
+    </div>
+    @endif
 
     <!-- =================Brand Area Starts================= -->
 
@@ -762,43 +303,43 @@
 
     <!-- =================Product-collection Area Starts================= -->
 
-        <div class="product-collection-area product-collection-area-2 pt-50 pb-50">
-            <div class="container-fluid">
-                <div class="row ">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="collection-wrapper first-collection pl-100 pt-75 " style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-9.png') }})">
-                            <span>Up To 75%</span>
-                            <p>Get Discount Info
-                                Men's T-shirt Summer
-                                Fashion - 2019
-                            </p>
-                            <a href="#">Buy Now <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-                        </div>
+    <div class="product-collection-area product-collection-area-2 pt-50 pb-50">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="collection-wrapper first-collection pl-100 pt-75 " style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-9.png') }})">
+                        <span>Up To 75%</span>
+                        <p>Get Discount Info
+                            Men's T-shirt Summer
+                            Fashion - 2019
+                        </p>
+                        <a href="{{ route('product.all') }}">Buy Now <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="collection-wrapper second-collection pl-50 pt-50 " style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-10.png') }})">
-                            <span>New in Store</span>
-                            <h4>Save 30%</h4>
-                            <p>Nulla iaculis erat vitae erat elementum, eu interdum sem bibendum.
-                            </p>
-                            <a href="#">Buy Now <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-                        </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="collection-wrapper second-collection pl-50 pt-50 " style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-10.png') }})">
+                        <span>New in Store</span>
+                        <h4>Save 30%</h4>
+                        <p>Nulla iaculis erat vitae erat elementum, eu interdum sem bibendum.
+                        </p>
+                        <a href="{{ route('product.all') }}">Buy Now <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="collection-wrapper third-collection  pt-60 pl-40" style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-13.png') }})">
-                            
-                            <h4>Men Blazer
-                                Collection <span>2019</span></h4>
-                        <ul>
-                            <li>New in Store</li>
-                        </ul>
-                            
-                            <a href="#">view all collections <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
-                        </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="collection-wrapper third-collection  pt-60 pl-40" style="background-image: url({{ asset('assets/site-assets/img/product/product-bg-13.png') }})">
+                        
+                        <h4>Men Blazer
+                            Collection <span>2019</span></h4>
+                    <ul>
+                        <li>New in Store</li>
+                    </ul>
+                        
+                        <a href="{{ route('product.all') }}">view all collections <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     <!-- =================Product-collection Area Ends================= -->
 

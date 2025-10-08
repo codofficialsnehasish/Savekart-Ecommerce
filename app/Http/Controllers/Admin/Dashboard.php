@@ -17,10 +17,26 @@ use Illuminate\Routing\Controllers\Middleware;
 
 class Dashboard extends Controller implements HasMiddleware
 {
+    // public static function middleware(): array
+    // {
+    //     return [
+    //         new Middleware('permission:Dashboard', only: ['index'])
+    //     ];
+    // }
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:Dashboard', only: ['index'])
+            new Middleware(function (Request $request, $next) {
+                // Check if user is logged in and has role 'User'
+                if (auth()->check() && auth()->user()->hasRole('User')) {
+                    return redirect()->route('user-dashboard.orders');
+                }
+
+                return $next($request);
+            }),
+
+            // Existing permission check
+            new Middleware('permission:Dashboard', only: ['index']),
         ];
     }
     public function index(){
