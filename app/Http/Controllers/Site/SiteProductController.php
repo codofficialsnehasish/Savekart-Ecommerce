@@ -35,7 +35,7 @@ class SiteProductController extends Controller
         }
 
         // Pagination Limit (Default: 4 products per page)
-        $perPage = $request->input('show', 4);
+        $perPage = $request->input('show', 50);
 
         $query->where('is_visible',1);
         
@@ -130,7 +130,7 @@ class SiteProductController extends Controller
         }
 
         // Pagination Limit (Default: 4 brands per page)
-        $perPage = $request->input('show', 4);
+        $perPage = $request->input('show', 50);
 
         $query->where('is_visible',1);
         
@@ -163,7 +163,7 @@ class SiteProductController extends Controller
             }
     
             // Pagination Limit (Default: 4 products per page)
-            $perPage = $request->input('show', 4);
+            $perPage = $request->input('show', 50);
     
             $query->where('is_visible',1);
             $query->where('brand_id',$brand->id);
@@ -201,7 +201,7 @@ class SiteProductController extends Controller
         }
 
         // Pagination Limit (Default: 4 brands per page)
-        $perPage = $request->input('show', 4);
+        $perPage = $request->input('show', 50);
 
         $query->where('is_visible',1);
         $query->where('parent_id',null);
@@ -315,7 +315,7 @@ class SiteProductController extends Controller
         }
 
         // Pagination
-        $perPage = $request->input('show', 4);
+        $perPage = $request->input('show', 50);
         $query->where('is_visible', 1);
         $products = $query->paginate($perPage)->withQueryString();
 
